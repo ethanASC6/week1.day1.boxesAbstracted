@@ -1,55 +1,30 @@
-const number_of_boxes_in_row = 10;
-const number_of_boxes_in_column = 1;
+const number_of_boxes_in_row = 30;
+const number_of_boxes_in_column = 30;
 
 let box_width, box_height;
 
 function setup(){
     createCanvas(600,600);
-    box_height = height;
-    box_width = ___;
-    // TASK #1 - set the box_width as the width of the canvas
-    // divided by the number of boxes in a row.
+    box_height = (height / number_of_boxes_in_column);
+    box_width = (width / number_of_boxes_in_row);
 }
 
 function draw(){
-    // TASK #2 - loop through each box in the row by
-    // replacing the blank with the correct number/variable
-    for(let i = 0; i < ___ ; i++){
-        const y = ___;
-        // TASK #3 - replace the blank with the y-coordinate for 
-        // current box
-        // HINT: it will always be the same
-
-        const x = ___;
-        // TASK #4 - replace the blank with the x-coordinate for 
-        // current box
-        // HINT: this changes with each box in the row
-        // depending on it's place. Think about how the box_width
-        // plays a role in this.
-
-        // TASK #5 - At the top of the document change the 
-        // number_of_boxes_in_row variable to another
-        // number (like 20 or 50). The boxes should still take up
-        // the whole width of the canvas. If you see something
-        // different, check over what you've done!
-
-        // TASK #6 - In the setup function, change the width of the 
-        // canvas to something else (like 1000). The boxes should 
-        // still take up the whole width of the canvas. If you see 
-        // something different, check over what you've done!
-
-        // TASK #7 - At the stop of this script, set the 
-        // variable "number_of_boxes_in_column" to 10
+    for(let i = 0; i < number_of_boxes_in_row; i++){
+        //const y = 0;
+        const x = i * box_width;
 
         // TASK #8 - Create another for loop under this task that
         // loops through each box in the column, using "j" as the 
         // iterator.
         // HINT: the code will look very similar to the first "for"
         // loop. 
-        // NOTE: this is a nested "for" loop, a loop within
-        // a loop! Loop-ception?
 
-        // create 2nd loop here!
+        for(let j=0; j<number_of_boxes_in_column; j++){
+            const y = j * box_height;
+            customFill(i,y);
+            rect(x,y,box_width,box_height);
+        }
 
         // TASK #9 - comment out the "const y" from earlier
         
@@ -65,21 +40,6 @@ function draw(){
 
         // TASK #12 - cut and paste the code for drawing the box into the 2nd "for" loop
 
-        // Drawing box
-        customFill(i,y);
-        rect(x,y,box_width,box_height);
-
-        // TASK #13 - At the top of the document change the 
-        // number_of_boxes_in_column variable to another
-        // number (like 20 or 50). The boxes should still take up
-        // the whole height of the canvas. If you see something
-        // different, check over what you've done!
-
-        // TASK #14 - In the setup function, change the height of the 
-        // canvas to something else (like 1000). The boxes should 
-        // still take up the whole height of the canvas. If you see 
-        // something different, check over what you've done!
-
         // EXTRA CREDIT - Replace the code for drawing boxes with your
         // own code that allows a mouse click on the box to change
         // the color of that specific box
@@ -92,7 +52,7 @@ function draw(){
  * @param {Number} i position of box in row
  * @param {Number} y y-coordinate for box in column
  */
-const customFill = function(i,y){
+function customFill(i,y){
     const j = y/box_height;
     fill(255/number_of_boxes_in_row * (i+1), 100, 255/number_of_boxes_in_column * (j+1) );
 }
